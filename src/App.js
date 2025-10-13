@@ -1,6 +1,6 @@
 import Home from "./components/Home";
 import NewWorkout from "./components/NewWorkout";
-import { Route, Router, Routes ,BrowserRouter} from "react-router-dom";
+import { Route, Router, Routes ,BrowserRouter, HashRouter} from "react-router-dom";
 import Workouts from "./components/Workouts";
 import Programs from "./components/Programs";
 import NewProgram from "./components/NewProgram";
@@ -8,7 +8,7 @@ import NewProgram from "./components/NewProgram";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter basename="/muscle-mentor-admin">
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/workout/add" element={<NewWorkout />} />
@@ -18,7 +18,7 @@ function App() {
           <Route path="/program/update/:id" element={<NewProgram />} />
           <Route path="/program/allPrograms" element={<Programs />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
