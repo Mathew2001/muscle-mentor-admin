@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/muscle-mentor-admin/static/css/main.e6c13ad2.css",
-    "main.js": "/muscle-mentor-admin/static/js/main.7eb54e13.js",
+    "main.js": "/muscle-mentor-admin/static/js/main.a540db4f.js",
     "static/media/logo.png": "/muscle-mentor-admin/static/media/logo.edc3d50e59bdbfd37916.png",
     "index.html": "/muscle-mentor-admin/index.html",
     "main.e6c13ad2.css.map": "/muscle-mentor-admin/static/css/main.e6c13ad2.css.map",
-    "main.7eb54e13.js.map": "/muscle-mentor-admin/static/js/main.7eb54e13.js.map"
+    "main.a540db4f.js.map": "/muscle-mentor-admin/static/js/main.a540db4f.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.7eb54e13.js"
+    "static/js/main.a540db4f.js"
   ]
 }
