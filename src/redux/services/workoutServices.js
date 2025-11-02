@@ -11,6 +11,9 @@ const workoutServices = {
   getWorkoutById(id){
     return requests.post(`workouts/getbyid/${id}`);
   },
+  getWorkoutByProgramId(id){
+    return requests.post(`workouts/getbyprogramid/${id}`);
+  },
   updateWorkout(id,body){
     return requests.put(`workouts/update/${id}`,body)
   },

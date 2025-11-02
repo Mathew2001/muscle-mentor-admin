@@ -11,16 +11,18 @@ export const GET_ALL_WORKOUTS_SUCCESS = "GET_ALL_WORKOUTS_SUCCESS";
 export const GET_ALL_WORKOUTS_FAIL = "GET_ALL_WORKOUTS_FAIL";
 export const GET_WORKOUT_BY_ID_SUCCESS = "GET_WORKOUT_BY_ID_SUCCESS";
 export const GET_WORKOUT_BY_ID_FAIL = "GET_WORKOUT_BY_ID_FAIL";
+export const GET_WORKOUT_BY_PROGRAM_ID_SUCCESS = "GET_WORKOUT_BY_PROGRAM_ID_SUCCESS";
+export const GET_WORKOUT_BY_PROGRAM_ID_FAIL = "GET_WORKOUT_BY_PROGRAM_ID_FAIL";
 
 export const createWorkout =
-  (title, duration, description, level, muscleGroup, programId) => async (dispatch) => {
+  (title, duration, level, description, muscleGroup, programId) => async (dispatch) => {
     try {
       const res = await workoutServices.createWorkout({
         programId,
         title,
         duration,
-        description,
         level,
+        description,
         muscleGroup,
       });
       if (res) dispatch({ type: CREATE_WORKOUT_SUCCESS, payload: res });
@@ -33,15 +35,15 @@ export const createWorkout =
   };
 
 export const updateWorkout =
-  (id, { title, duration, description, level, muscleGroup, programId }) =>
+  (id, { title, duration, level, description, muscleGroup, programId }) =>
   async (dispatch) => {
     try {
       const res = await workoutServices.updateWorkout(id, {
         programId,
         title,
         duration,
-        description,
         level,
+        description,
         muscleGroup,
       });
       if (res) dispatch({ type: UPDATE_WORKOUT_SUCCESS, payload: res });
@@ -88,5 +90,19 @@ export const getWorkoutById = (id) => async (dispatch) => {
     }
   } catch (error) {
     dispatch({ type: GET_WORKOUT_BY_ID_FAIL, payload: null });
+  }
+};
+
+export const getWorkoutByProgramId = (id) => async (dispatch) => {
+  try {
+    const workouts = await workoutServices.getWorkoutByProgramId(id);
+    if (workouts) {
+      dispatch({ type: GET_WORKOUT_BY_PROGRAM_ID_SUCCESS, payload: workouts });
+    }
+  } catch (error) {
+    dispatch({
+      type: GET_WORKOUT_BY_PROGRAM_ID_FAIL,
+      payload: error?.response?.data?.message || "Error get workouts by program id",
+    });
   }
 };

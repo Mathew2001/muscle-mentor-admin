@@ -7,6 +7,7 @@ import {
 } from "../redux/actions/workoutActions";
 import { Link, useParams } from "react-router-dom";
 import { getAllPrograms } from "../redux/actions/programActions";
+import BackButton from "./BackButton";
 
 
 const Workout = () => {
@@ -74,130 +75,149 @@ const Workout = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Duration (minutes):</label>
-          <input
-            type="number"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Level:</label>
-          <select
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
-            required
-          >
-            <option value="">Select level</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Description:</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Muscle Groups:</label>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                value="chest"
-                checked={muscleGroup.includes('chest')}
-                onChange={handleMuscleGroupChange}
-              />
-              Chest
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="back"
-                checked={muscleGroup.includes('back')}
-                onChange={handleMuscleGroupChange}
-              />
-              Back
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="legs"
-                checked={muscleGroup.includes('legs')}
-                onChange={handleMuscleGroupChange}
-              />
-              Legs
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="shoulders"
-                checked={muscleGroup.includes('shoulders')}
-                onChange={handleMuscleGroupChange}
-              />
-              Shoulders
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="arms"
-                checked={muscleGroup.includes('arms')}
-                onChange={handleMuscleGroupChange}
-              />
-              Arms
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="core"
-                checked={muscleGroup.includes('core')}
-                onChange={handleMuscleGroupChange}
-              />
-              Core
-            </label>
+    <div className="container">
+      <h1 className="text-center mb-3">Add Workout</h1>
+      <div className="row justify-content-center">
+        <div className="col-md-10 col-xl-8">
+          <div className="d-flex justify-content-between align-items-center">
+            <BackButton />
+            <Link to={"/workout/allWorkouts"} className="btn btn-primary">all workouts</Link>
           </div>
-        </div>
+          <form onSubmit={handleSubmit} className="border p-3 rounded mt-2">
+            <div className="mb-3">
+              <label>Title:</label>
+              <input
+                className="form-control"
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </div>
 
-        <div>
-          <label>Program:</label>
-          <select
-            value={programId}
-            onChange={handleProgramChange}
-            required
-          >
-            <option value="">Select Program</option>
-            {programs && programs.map(program => (
-              <option key={program._id} value={program._id}>
-                {program.name}
-              </option>
-            ))}
-          </select>
-        </div>
+            <div className="mb-3">
+              <label>Duration (minutes):</label>
+              <input
+                className="form-control"
+                type="number"
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+                required
+              />
+            </div>
 
-        <button type="submit">Add Workout</button>
-      </form>
-      <Link to={"/"}>Back</Link>
+            <div className="mb-3">
+              <label>Level:</label>
+              <select
+                className="form-control"
+                value={level}
+                onChange={(e) => setLevel(e.target.value)}
+                required
+              >
+                <option value="">Select level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+
+            <div className="mb-3">
+              <label>Description:</label>
+              <textarea
+                className="form-control"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label>Muscle Groups:</label>
+              <div className="form-check d-flex flex-column gap-2">
+                <label className="form-check-label">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value="chest"
+                    checked={muscleGroup.includes('chest')}
+                    onChange={handleMuscleGroupChange}
+                  />
+                  Chest
+                </label>
+                <label className="form-check-label">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value="back"
+                    checked={muscleGroup.includes('back')}
+                    onChange={handleMuscleGroupChange}
+                  />
+                  Back
+                </label>
+                <label className="form-check-label">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value="legs"
+                    checked={muscleGroup.includes('legs')}
+                    onChange={handleMuscleGroupChange}
+                  />
+                  Legs
+                </label>
+                <label className="form-check-label">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value="shoulders"
+                    checked={muscleGroup.includes('shoulders')}
+                    onChange={handleMuscleGroupChange}
+                  />
+                  Shoulders
+                </label>
+                <label className="form-check-label">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value="arms"
+                    checked={muscleGroup.includes('arms')}
+                    onChange={handleMuscleGroupChange}
+                  />
+                  Arms
+                </label>
+                <label className="form-check-label">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value="core"
+                    checked={muscleGroup.includes('core')}
+                    onChange={handleMuscleGroupChange}
+                  />
+                  Core
+                </label>
+              </div>
+            </div>
+
+            <div className="mb-3">
+              <label>Program:</label>
+              <select
+                className="form-control"
+                value={programId}
+                onChange={handleProgramChange}
+                required
+              >
+                <option value="">Select Program</option>
+                {programs && programs.map(program => (
+                  <option key={program._id} value={program._id}>
+                    {program.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button type="submit" className="btn btn-primary">submit</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

@@ -13,12 +13,13 @@ export const GET_PROGRAM_BY_ID_SUCCESS = "GET_PROGRAM_BY_ID_SUCCESS";
 export const GET_PROGRAM_BY_ID_FAIL = "GET_PROGRAM_BY_ID_FAIL";
 
 export const createProgram =
-  (name, durationWeeks, description) => async (dispatch) => {
+  ({name, durationWeeks, description, images}) => async (dispatch) => {
     try {
       const program = await programServices.createProgram({
         name,
         durationWeeks,
-        description,
+        description,  
+        images,
       });
       dispatch({ type: CREATE_PROGRAM_SUCCESS, payload: program });
     } catch (error) {
@@ -30,13 +31,14 @@ export const createProgram =
   };
 
 export const updateProgram =
-  (id, { name, durationWeeks, description }) =>
+  (id, { name, durationWeeks, description, images }) =>
   async (dispatch) => {
     try {
       const programs = await programServices.updateProgram(id, {
         name,
         durationWeeks,
         description,
+        images,
       });
       dispatch({ type: UPDATE_PROGRAM_SUCCESS, payload: programs });
     } catch (error) {

@@ -4,7 +4,8 @@ import { Route, Router, Routes ,BrowserRouter, HashRouter} from "react-router-do
 import Workouts from "./components/Workouts";
 import Programs from "./components/Programs";
 import NewProgram from "./components/NewProgram";
-
+import ContactUsButton from "./components/contact-us/ContactUsButton";
+import ReviewsButton from "./components/reviews/ReviewsButton";
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,8 @@ function App() {
           <Route path="/program/add" element={<NewProgram />} />
           <Route path="/program/update/:id" element={<NewProgram />} />
           <Route path="/program/allPrograms" element={<Programs />} />
+          <Route path="/contactUs" element={<ContactUsButton />} />
+          <Route path="/reviews" element={<ReviewsButton />} />
         </Routes>
       </HashRouter>
     </div>

@@ -9,11 +9,14 @@ import {
   GET_ALL_WORKOUTS_FAIL,
   GET_WORKOUT_BY_ID_SUCCESS,
   GET_WORKOUT_BY_ID_FAIL,
+  GET_WORKOUT_BY_PROGRAM_ID_SUCCESS,
+  GET_WORKOUT_BY_PROGRAM_ID_FAIL,
 } from "../actions/workoutActions";
 
 const initialState = {
   workouts: [],
   workout: null,
+  workoutsByProgramId: [],
   error: null,
 };
 const workoutReducer = (state = initialState, action) => {
@@ -69,6 +72,17 @@ const workoutReducer = (state = initialState, action) => {
         error: null,
       };
     case GET_WORKOUT_BY_ID_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case GET_WORKOUT_BY_PROGRAM_ID_SUCCESS:
+      return {
+        ...state,
+        workoutsByProgramId: action.payload,
+        error: null,
+      };
+    case GET_WORKOUT_BY_PROGRAM_ID_FAIL:
       return {
         ...state,
         error: action.payload,
