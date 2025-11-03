@@ -14,7 +14,7 @@ export const useReviewSubmit = () => {
 
   const onSubmit = (id, {userName, content, rating, isApproved}) => {
     try {
-      console.log(id, {userName, content, rating, isApproved})
+      console.log("updateReview", id, {userName, content, rating, isApproved})
       dispatch(updateReview(id, {userName, content, rating, isApproved}));
       //window.location.reload();
     } catch (error) {
